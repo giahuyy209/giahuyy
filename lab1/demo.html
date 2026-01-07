@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu ứng Fade In - Mờ rồi rõ lên</title>
+    <style>
+        :root {
+            --blue-main: #5194e4;      
+            --red-hover: #ff0000;     
+            --yellow-hover: #ffcc00;  
+            --box-size: 180px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            background-color: #ffffff;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, var(--box-size));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            width: var(--box-size);
+            height: var(--box-size);
+            background-color: var(--blue-main);
+            color: black;
+            padding: 10px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: all 0.4s ease; 
+            display: flex;
+            align-items: flex-start;
+            
+            /* TRẠNG THÁI ĐẦU: Ẩn hoàn toàn */
+            opacity: 0; 
+        }
+
+        /* --- 1. HIỆU ỨNG MỜ RỒI RÕ (TỪ DƯỚI LÊN) --- */
+        @keyframes fadeUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* --- 2. HIỆU ỨNG MỜ RỒI RÕ (TỪ TRÊN XUỐNG) --- */
+        @keyframes fadeDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Áp dụng hiệu ứng xuất hiện */
+        .fade-box, .scale-box, .color-box, .combo-box {
+            animation: fadeUp 1.2s ease-out forwards;
+        }
+
+        .translate-box {
+            animation: fadeDown 1.2s ease-out forwards;
+        }
+
+        /* Thứ tự xuất hiện mờ -> rõ từng ô (Stagger) */
+        .box:nth-child(1) { animation-delay: 0.1s; }
+        .box:nth-child(2) { animation-delay: 0.3s; }
+        .box:nth-child(3) { animation-delay: 0.5s; }
+        .box:nth-child(4) { animation-delay: 0.7s; }
+        .box:nth-child(5) { animation-delay: 0.9s; }
+
+        /* --- CÀI ĐẶT HOVER (RÊ CHUỘT) --- */
+
+        /* 3 Ô đầu: Chỉ đổi hiệu ứng, ko đổi màu nền xanh */
+        .fade-box:hover { opacity: 0.4; }
+        .translate-box:hover { transform: translateY(-10px); }
+
+        /* Ô Scale: Tự co giãn & Hover đổi Đỏ */
+        .scale-box {
+            animation: fadeUp 1.2s ease-out forwards, coGian 2.5s infinite ease-in-out 1.5s;
+        }
+        .scale-box:hover {
+            background-color: var(--red-hover);
+            color: white;
+            animation-play-state: paused;
+        }
+
+        @keyframes coGian {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        }
+
+        /* Ô Color: Hover đổi Đỏ */
+        .color-box:hover {
+            background-color: var(--red-hover);
+            color: white;
+        }
+
+        /* Ô Combo: Hover đổi Vàng */
+        .combo-container { margin-top: 20px; }
+        .combo-box { 
+            background-color: #629bc5; 
+            animation-delay: 1.1s;
+        }
+        .combo-box:hover {
+            background-color: var(--yellow-hover); 
+            color: black;
+            transform: rotate(3deg) scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="grid-container">
+        <div class="box fade-box">ĐỘ MỜ – OPACITY (Fade In / Fade Out)</div>
+        <div class="box fade-box">ĐỘ MỜ – OPACITY (Fade In / Fade Out)</div>
+        
+        <div class="box translate-box">VỊ TRÍ – POSITION (Translate)</div>
+        
+        <div class="box scale-box">KÍCH THƯỚC – SIZE (Scale)</div>
+        
+        <div class="box color-box">MÀU SẮC – COLOR</div>
+    </div>
+
+    <div class="combo-container">
+        <div class="box combo-box">
+            KẾT HỢP – “ĐÒN BẨY KÉP”
+        </div>
+    </div>
+
+</body>
+</html>
