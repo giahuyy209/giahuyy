@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+}
+
+.lab-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.lab-item {
+    padding: 20px 30px;
+    border: 2px solid #333;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.lab-item:hover {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-5px);
+}
