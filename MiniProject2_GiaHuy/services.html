@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #e5e7eb;
+      text-decoration: none;
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: #38bdf8;
+    }
+
+    /* MAIN */
+    main {
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 42px;
+      margin-bottom: 50px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 260px;
+      padding: 40px 20px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #38bdf8, #a855f7);
+      font-size: 20px;
+      font-weight: bold;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.6;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+      main h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">MySite</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2>Our Services</h2>
+
+  <div class="cards">
+    <div class="card">Web Design</div>
+    <div class="card">UI / UX</div>
+    <div class="card">Animation</div>
+  </div>
+</main>
+
+<footer>
+  © 2026 MySite
+</footer>
+
+</body>
+</html>
